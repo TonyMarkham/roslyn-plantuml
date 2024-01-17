@@ -1,0 +1,66 @@
+﻿<Window x:Class="RoslynPlantUml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoslynPlantUml"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Background="White" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="68" />
+                <ColumnDefinition  />
+                <ColumnDefinition Width="75" />
+                <ColumnDefinition Width="75" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="tSolution" Text="Solution:"
+                FontSize="16" FontWeight="Normal" Margin="2"
+                Grid.Column="0" />
+            <TextBox x:Name="txtSolution" Text="{Binding SolutionPath}"
+                 FontSize="16" Margin="2" TextWrapping="NoWrap"
+                 Grid.Column="1" />
+            <ProgressBar x:Name="prgSolutionLoadProgress" IsIndeterminate="False"
+                Background="Transparent" Margin="2"
+                Grid.Column="1" />
+            <TextBlock x:Name="txtProgressBarText"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Background="Transparent" Foreground="Transparent"
+                Grid.Column="1" />
+            <Button x:Name="btnBrowse" Content="Browse"
+                Click="btnBrowse_Click"
+                FontSize="16" Margin="2"
+                Grid.Column="2" />
+            <Button x:Name="btnLoad" Content="Load"
+                Click="btnLoad_Click" IsEnabled="False"
+                FontSize="16" Margin="2"
+                Grid.Column="3" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="AssemblyListView"
+                Grid.Row="0" Grid.Column="0"
+                ItemsSource="{Binding Namespaces}"
+                MouseLeftButtonUp="AssemblyListView_MouseLeftButtonUp"/>
+            <ListView x:Name="ClassListView"
+                Grid.Row="0" Grid.Column="1"
+                ItemsSource="{Binding Classes}"
+                MouseLeftButtonUp="ClassListView_MouseLeftButtonUp"/>
+            <ListView x:Name="MembersTextBox"
+                Grid.Row="0" Grid.Column="2"
+                ItemsSource="{Binding Members}"/>
+            <GridSplitter Grid.Column="0"
+                HorizontalAlignment="Right" Width="2" />
+            <GridSplitter Grid.Column="1"
+                HorizontalAlignment="Right" Width="2" />
+        </Grid>
+    </Grid>
+</Window>

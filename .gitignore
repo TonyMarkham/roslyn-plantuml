@@ -1,0 +1,5 @@
+# Rider ignored files
+.idea
+
+RoslynPlantUml/RoslynPlantUml/bin
+RoslynPlantUml/RoslynPlantUml/obj
